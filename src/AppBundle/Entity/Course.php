@@ -5,17 +5,17 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Courses
+ * Course
  *
- * @ORM\Table(name="courses")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CoursesRepository")
+ * @ORM\Table(name="cou_course")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CourseRepository")
  */
-class Courses
+class Course
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="cou_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,10 +24,22 @@ class Courses
     /**
      * @var int
      *
-     * @ORM\Column(name="cou_Distance", type="integer")
+     * @ORM\Column(name="cou_distance", type="integer")
      */
     private $distance;
 
+
+    /**
+    * @ORM\ManyToOne(targetEntity="chauffeur", inversedBy="courses")
+    * @ORM\JoinColumn(name="cha_id", referencedColumnName="cha_id")
+    */
+    private $chauffeur;
+    
+    /**
+     * 
+     * 
+     */
+    private $arriver;
 
     /**
      * Get id
@@ -35,15 +47,6 @@ class Courses
      * @return int
      */
     
-     /**
-     * @ORM\ManyToOne(targetEntity="Chauffeurs", inversedBy="Courses")
-     * @ORM\JoinColumn(name="Chauffeurs_id", referencedColumnName="id")
-     */
-    
-    private $Chauffeurs;
-
-
-
     public function getId()
     {
         return $this->id;
@@ -54,7 +57,7 @@ class Courses
      *
      * @param integer $distance
      *
-     * @return Courses
+     * @return Course
      */
     public function setDistance($distance)
     {

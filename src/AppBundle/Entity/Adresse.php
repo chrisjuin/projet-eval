@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Adresse
  *
- * @ORM\Table(name="adresse")
+ * @ORM\Table(name="adr_adresse")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AdresseRepository")
  */
 class Adresse
@@ -15,7 +15,7 @@ class Adresse
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="adr_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,16 +24,30 @@ class Adresse
     /**
      * @var string
      *
-     * @ORM\Column(name="adr_Street", type="string", length=255, unique=true)
+     * @ORM\Column(name="adr_street", type="string", length=255, unique=true)
      */
     private $street;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adr_City", type="string", length=60, unique=true)
+     * @ORM\Column(name="adr_city", type="string", length=60, unique=true)
      */
     private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adr_arriver", type="string", length=255, unique=true)
+     */
+    private $arriver;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adr_depart", type="string", length=255, unique=true)
+     */
+    private $depart;
 
 
     /**
@@ -92,6 +106,54 @@ class Adresse
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set arriver
+     *
+     * @param string $arriver
+     *
+     * @return Adresse
+     */
+    public function setArriver($arriver)
+    {
+        $this->arriver = $arriver;
+
+        return $this;
+    }
+
+    /**
+     * Get arriver
+     *
+     * @return string
+     */
+    public function getArriver()
+    {
+        return $this->arriver;
+    }
+
+    /**
+     * Set depart
+     *
+     * @param string $depart
+     *
+     * @return Adresse
+     */
+    public function setDepart($depart)
+    {
+        $this->depart = $depart;
+
+        return $this;
+    }
+
+    /**
+     * Get depart
+     *
+     * @return string
+     */
+    public function getDepart()
+    {
+        return $this->depart;
     }
 }
 

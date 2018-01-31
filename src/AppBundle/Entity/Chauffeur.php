@@ -3,20 +3,19 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Chauffeurs
+ * Chauffeur
  *
- * @ORM\Table(name="chauffeurs")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ChauffeursRepository")
+ * @ORM\Table(name="cha_chauffeur")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ChauffeurRepository")
  */
-class Chauffeurs
+class Chauffeur
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="cha_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -37,20 +36,6 @@ class Chauffeurs
     private $surname;
 
     /**
-     * @ORM\OneToMany(targetEntity="Courses", mappedBy="category")
-     */
-
-    private $Courses; 
-
-    
-    public function __construct()
-    {
-        $this->Couses = new ArrayCollection();
-    }
-
-
-    
-    /**
      * Get id
      *
      * @return int
@@ -65,7 +50,7 @@ class Chauffeurs
      *
      * @param string $name
      *
-     * @return Chauffeurs
+     * @return Chauffeur
      */
     public function setName($name)
     {
@@ -89,7 +74,7 @@ class Chauffeurs
      *
      * @param string $surname
      *
-     * @return Chauffeurs
+     * @return Chauffeur
      */
     public function setSurname($surname)
     {
